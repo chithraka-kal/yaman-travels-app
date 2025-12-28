@@ -57,7 +57,7 @@
 
 | AI Planner | AI Suggetions |
 |:---:|:---:|
-| ![AI Planner](./yaman-next/readme/Yaman%20Travels%20-%20AI%20planner.png) | ![AI Suggetions](./yaman-next/readme/Yaman%20Travels%20-%20AI%20suggetions.png) |
+| ![AI Planner](./yaman-next/public/Yaman%20Travels%20-%20AI%20planner.png) | ![AI Suggetions](./yaman-next/public/Yaman%20Travels%20-%20AI%20suggetions.png) |
 
 
 ---
