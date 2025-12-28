@@ -12,9 +12,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Dependencies
-        run: cd yaman-next && npm install
+        working-directory: ./yaman-next
+        run: npm install
 
       - name: Run Unit Tests
+        working-directory: ./yaman-next
         run: npm test
 
       - name: Login to Docker Hub
