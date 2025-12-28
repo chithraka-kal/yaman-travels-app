@@ -1,21 +1,38 @@
 # 🌍 Yaman Travels - AI-Powered Travel Planner
 
+[![CI/CD Pipeline](https://github.com/chithraka-kal/Yaman-Travels-App/actions/workflows/deploy.yml/badge.svg)](https://github.com/chithraka-kal/Yaman-Travels-App/actions)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
-![AWS](https://img.shields.io/badge/AWS-EC2_Deployed-orange)
+![AWS](https://img.shields.io/badge/AWS-EC2_Production-orange)
+![Testing](https://img.shields.io/badge/Tests-Passing-success)
 
-**Yaman Travels** is a full-stack modern web application that leverages Generative AI to create personalized travel itineraries. It features a robust architecture deployed on AWS EC2 using Docker containers, ensuring scalability and performance.
+**Yaman Travels** is a full-stack modern web application that leverages Generative AI to create personalized travel itineraries. It features a production-grade DevOps architecture with automated CI/CD pipelines, containerization, and unit testing.
+
+🔗 **Live Demo:** [https://yamantravels.live](https://yamantravels.live)
 
 ---
 
 ## 🚀 Key Features
 
 * **🤖 AI Trip Planner:** Generates detailed day-by-day travel itineraries using the **Gemini AI API**.
-* **📂 Dynamic Destinations:** Browse and filter destinations stored in **MongoDB Atlas**.
-* **🔐 Secure Authentication:** Full user sign-up/login system powered by **NextAuth.js**.
-* **⚡ Optimized Performance:** Implements **Next.js Static Generation** and Image Optimization for fast load times.
-* **☁️ Cloud Native:** Fully containerized with **Docker** and deployed on **AWS EC2** (Free Tier optimized).
+* **🔄 Automated CI/CD:** Zero-touch deployment pipeline using **GitHub Actions**. Commits are automatically tested, built, and deployed to AWS.
+* **🛡️ Quality Assurance:** Integrated **Jest** unit testing suite prevents regression bugs before deployment.
+* **🔐 Secure Infrastructure:** Hosted behind an **Nginx Reverse Proxy** with **SSL/TLS** encryption (Let's Encrypt).
+* **🐳 Fully Containerized:** Consistent development and production environments using **Docker**.
+
+---
+
+## 🏗️ System Architecture
+
+**User** ➡ **Nginx (Reverse Proxy)** ➡ **Docker Container (Next.js 14)** ➡ **MongoDB Atlas**
+
+* **Traffic Flow:** Incoming HTTPS requests are handled by Nginx on AWS EC2, which forwards traffic to the Dockerized application running on port 3000.
+* **CI/CD Flow:**
+  1. **Push Code:** Developer pushes to `main`.
+  2. **Test:** GitHub Actions runs `npm test`. (Build fails if tests fail).
+  3. **Build:** Docker image is built and pushed to **Docker Hub**.
+  4. **Deploy:** AWS EC2 instance pulls the new image and restarts the container automatically.
 
 ---
 
@@ -27,31 +44,30 @@
 * **Styling:** Tailwind CSS
 * **Authentication:** NextAuth.js
 
-### **Infrastructure & DevOps**
-* **Database:** MongoDB Atlas (Cloud)
+### **DevOps & Infrastructure**
+* **Cloud Provider:** AWS EC2 (Ubuntu Linux)
 * **Containerization:** Docker & Docker Compose
-* **Cloud Provider:** AWS EC2 (t2.micro / Ubuntu)
-* **Deployment Strategy:** Local Build → Docker Hub Push → AWS Pull
+* **CI/CD:** GitHub Actions (Automated Workflows)
+* **Web Server:** Nginx (Reverse Proxy & SSL)
+* **Testing:** Jest & React Testing Library
 
 ---
 
 ## 📸 Screenshots
 
-| AI Planner | Destinations Page |
+| AI Planner | AI Suggetions |
 |:---:|:---:|
-| ![AI Planner](https://via.placeholder.com/400x200?text=AI+Planner+Screenshot) | ![Destinations](https://via.placeholder.com/400x200?text=Destinations+Screenshot) |
-*(Add your actual screenshots here)*
+| ![AI Planner](./yaman-next/readme/Yaman%20Travels%20-%20AI%20planner.png) | ![AI Suggetions](./yaman-next/readme/Yaman%20Travels%20-%20AI%20suggetions.png) |
+
 
 ---
 
 ## ⚙️ Installation & Local Setup
 
-Follow these steps to run the project locally on your machine.
-
 ### **1. Clone the Repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/Yaman_Travels_Frontend.git
-cd Yaman_Travels_Frontend/yaman-next
+git clone [https://github.com/chithraka-kal/Yaman-Travels-App.git](https://github.com/chithraka-kal/Yaman-Travels-App.git)
+cd Yaman-Travels-App/yaman-next
 ```
 
 ### **2. Install Dependencies**
@@ -73,8 +89,12 @@ NEXTAUTH_SECRET=your_super_secret_key_here
 # AI API Key (Gemini)
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
-
-### **4. Run the Development Server**
+### **4. Run Tests**
+Ensure the build is stable before coding.
+```bash
+npm test
+```
+### **5. Run the Development Server**
 ```bash
 npm run dev
 ```
@@ -97,37 +117,8 @@ If your database is empty, run the seeding script to populate it with initial da
 
 ---
 
-## ☁️ Deployment Guide (AWS EC2)
 
-This project uses a **"Build Local, Ship to Cloud"** strategy to optimize for AWS Free Tier resources.
 
-### **Phase 1: Build & Push (On Local Machine)**
-Instead of building on the limited AWS server, we build the image locally and push it to Docker Hub.
-
-```bash
-# 1. Login to Docker Hub
-docker login
-
-# 2. Build the optimized image
-# Make sure you are inside the 'yaman-next' folder
-docker build -t your-dockerhub-username/yaman-travels-app:latest .
-
-# 3. Push to the cloud
-docker push your-dockerhub-username/yaman-travels-app:latest
-```
-
-### **Phase 2: Pull & Run (On AWS Server)**
-On the AWS EC2 instance:
-
-```bash
-# 1. Pull the latest image
-docker compose pull
-
-# 2. Restart the container
-docker compose up -d
-```
-
----
 
 ## 🤝 Contributing
 
@@ -142,5 +133,6 @@ Contributions are welcome!
 
 ## 📧 Contact
 
-**Your Name** - [Your Email or LinkedIn]
-Project Link: [https://github.com/YOUR_USERNAME/Yaman_Travels_Frontend](https://github.com/YOUR_USERNAME/Yaman_Travels_Frontend)
+**Email** - [chithrakakalanamith@gmail.com]
+**Linkedin** - [https://www.linkedin.com/in/chithraka-kalanamith/]
+
