@@ -48,11 +48,11 @@ export default function LoginPage() {
             )}
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
               <input 
                 type="text" 
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 outline-none transition"
-                placeholder="Type 'admin'"
+                placeholder="you@example.com"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -63,7 +63,7 @@ export default function LoginPage() {
               <input 
                 type="password" 
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 outline-none transition"
-                placeholder="Type 'admin'"
+                placeholder="Your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
